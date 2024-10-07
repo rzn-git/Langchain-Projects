@@ -2,6 +2,7 @@ import os
 from langchain_core.prompts import PromptTemplate
 from langchain_openai import ChatOpenAI
 import openai
+from langchain_ollama import ChatOllama
 
 # Set your API key here
 openai.api_key = os.getenv("OPENAI_API_KEY")
@@ -26,10 +27,11 @@ if __name__ == "__main__":
     )
 
     # Define the language model
-    llm = ChatOpenAI(temperature=0, model_name="gpt-3.5-turbo")
+    #llm = ChatOpenAI(temperature=0, model_name="gpt-3.5-turbo")
+    llm = ChatOllama (model="llama3.1" )
 
     # Create the chain (pipe the prompt template into the language model)
-    chain = summary_prompt_template | llm
+    chain = summary_prompt_template | llm 
 
     # Invoke the chain with input
     response = chain.invoke(input={"information": information})
