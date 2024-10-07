@@ -4,7 +4,7 @@ from langchain_openai import ChatOpenAI
 import openai
 
 # Set your API key here
-openai.api_key = os.getenv('OPENAI_API_KEY')
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 information = """
     List of country - capital
@@ -15,13 +15,15 @@ information = """
     """
 
 if __name__ == "__main__":
-    
+
     # Modify the template to ask a specific question
     summary_template = """ 
         From the following information, what is the capital of Bangladesh? {information}
     """
 
-    summary_prompt_template = PromptTemplate(input_variables=["information"], template=summary_template)
+    summary_prompt_template = PromptTemplate(
+        input_variables=["information"], template=summary_template
+    )
 
     # Define the language model
     llm = ChatOpenAI(temperature=0, model_name="gpt-3.5-turbo")
@@ -34,4 +36,3 @@ if __name__ == "__main__":
 
     # Print only the content
     print(response.content)
-    
