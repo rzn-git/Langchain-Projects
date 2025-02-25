@@ -27,8 +27,8 @@ if __name__ == "__main__":
     )
 
     # Define the language model
-    llm = ChatOpenAI(temperature=0, model_name="gpt-4o-mini")
-    #llm = ChatOllama(model="llama3.2:1b", temperature=0)
+    #llm = ChatOpenAI(temperature=0, model_name="gpt-4o-mini")
+    llm = ChatOllama(model="llama3.2:1b", temperature=0)
 
     # Create the chain (pipe the prompt template into the language model)
     chain = summary_prompt_template | llm 
